@@ -70,34 +70,10 @@ def _do_python_eval(_devkit_path, _detpath, _year, _image_set, _classes, output_
 if __name__ == '__main__':
     #load results
     # faster rcnn crop
-    #_devkit_path = '/home/xuewenyuan/Dataset/CMDD/cmdd-multi-set2'
-    #_detpath = '/home/xuewenyuan/tf-faster-rcnn/tools/crop_multix0.5/results.txt'
-    #output_dir = '/home/xuewenyuan/tf-faster-rcnn/tools/crop_multix0.5/test'
-    #CPTN
-    _devkit_path = '/home/xuewenyuan/Dataset/CMDD/cmdd-multi-set2'
-    _detpath = '/home/xuewenyuan/text-detection-ctpn/data/test/multi-2000x2000/results-multi.txt'
-    output_dir = '/home/xuewenyuan/text-detection-ctpn/data/test/multi-2000x2000/'
-    #TextBoxes
-    #_devkit_path = '/home/xuewenyuan/TextBoxes/data/VOC0712'
-    #_devkit_path = '/home/xuewenyuan/Dataset/CMDD/src_image_set'
-    #_detpath = '/home/xuewenyuan/TextBoxes/examples/results/test/results.txt'
-    #output_dir = '/home/xuewenyuan/TextBoxes/examples/results/test'
-    #YOLO
-    #_devkit_path = '/home/xuewenyuan/Dataset/CMDD/src_image_set'
-    #_detpath = '/home/xuewenyuan/darknet/results/results.txt'
-    #output_dir = '/home/xuewenyuan/darknet/results'
-    #myMethod
-    #_devkit_path = '/home/xuewenyuan/Dataset/CMDD/table2_set_238'
-    #_detpath = '/home/xuewenyuan/Dataset/CMDD/table2_set_238/results_paper/results.txt'
-    #output_dir = '/home/xuewenyuan/Dataset/CMDD/table2_set_238/results_paper'
-    #EAST
-    #_devkit_path = '/home/xuewenyuan/Dataset/CMDD/src_image_set'
-    #_detpath = '/home/xuewenyuan/EAST/data/results/results-srcx0.4.txt'
-    #output_dir = '/home/xuewenyuan/EAST/data/results'
-    #mser
-    #_devkit_path = '/home/xuewenyuan/Dataset/CMDD/src_image_set'
-    #_detpath = '/home/xuewenyuan/tf-faster-rcnn/tools/mser/mser.txt'
-    #output_dir = '/home/xuewenyuan/tf-faster-rcnn/tools/mser/results'
+    _devkit_path = './data/VOCdevkit2007'
+    _detpath = './tools/results/results.txt'
+    output_dir = './tools/results/test'
+    
 
     _year = '2007'
     _image_set = 'test'

@@ -49,7 +49,7 @@ def save_results(image_name,im,line,thresh):
     inds=np.where(line[:,-1]>=thresh)[0]
     if len(inds)==0:
         return 
-    with open('./results.txt','a') as f:
+    with open('./tools/results/results.txt','a') as f:
         for i in inds:
             bbox=line[i,:4]
             score=line[i,-1]
@@ -157,7 +157,7 @@ def demo(sess, net, image_name):
 
 	# Load the demo image
 	#im_file = os.path.join(cfg.DATA_DIR, 'demo', image_name)
-	im_file = os.path.join('/home/xuewenyuan/Dataset/CMDD/src_image_set/VOC2007/JPEGImages', image_name+'.jpg')
+	im_file = os.path.join('./data/VOCdevkit2007/VOC2007/JPEGImages', image_name+'.jpg')
 	im = cv2.imread(im_file)
 	height,width = im.shape[:2]
 	
@@ -165,10 +165,14 @@ def demo(sess, net, image_name):
     # Detect all object classes with crops and regress object bounds
 	CONF_THRESH = 0.6
 	NMS_THRESH = 0.7
-	H_window = int((600.0/3400)*height)
-	W_window = int((800.0/2500)*width)
-	h_gap = int(H_window*1.0/10) #70
-	w_gap = int(W_window*1.0/10) #60    
+	#H_window = int((600.0/3400)*height)
+	#W_window = int((800.0/2500)*width)
+	#h_gap = int(H_window*1.0/10) #70
+	#w_gap = int(W_window*1.0/10) #60   
+	H_window = 600
+	W_window = 800
+	h_gap = 60
+	w_gap = 80   
 	timer = Timer()
 	timer.tic()
 	#bboxes, scores = crop(im , H_window, W_window, h_gap, w_gap, sess, net, NMS_THRESH, thresh=CONF_THRESH)
@@ -244,7 +248,7 @@ if __name__ == '__main__':
     #im_names = ['scan_item10+_24.jpg']#,'scan_item10-_41.jpg','illu_item10+_R_2.jpg', 'illu_item10-_RT_4.jpg']
     
     im_names = []
-    testFile = '/home/xuewenyuan/Dataset/CMDD/src_image_set/VOC2007/ImageSets/Main/test.txt'
+    testFile = './data/VOCdevkit2007/VOC2007/ImageSets/Main/test.txt'
     with open(testFile,'r') as f:
         for name in f.readlines():
             name = name.strip().replace(' ','').replace('\n','').replace('\r','')
