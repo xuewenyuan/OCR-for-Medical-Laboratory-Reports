@@ -11,9 +11,9 @@ from scipy import misc
 from timer import Timer
 from PIL import Image
 
-import models.crnn_fromL4 as crnn
+import models.crnn_fromL5 as crnn
 
-os.environ['CUDA_VISIBLE_DEVICES'] = '7'
+os.environ['CUDA_VISIBLE_DEVICES'] = '1'
 reload(sys)
 sys.setdefaultencoding('utf-8')
 
@@ -53,69 +53,12 @@ def getFileList(path):
 		            ret.append(osj(filePath,filename))
     return ret
 
-model_path = '/data/xuewenyuan/crnn-pytorch-model/expr_fromL4/netCRNN_5_5000.pth'
-#model_path = "/data/xuewenyuan/crnn-pytorch-model/expr_crnn/netCRNN_5_45000.pth"
-#val_path = './data/srcFile/val'
-val_path = '/home/zoe/PycharmProjects/testdataset/roi'
-#alphabet = '0123456789abcdefghijklmnopqrstuvwxyz'
-#val_fileList = getFileList(val_path)
+model_path = './output/netCRNN_L3.pth'
+
 
 #ConvertToUTF8(val_fileList)
-'''
-model = crnn.CRNN(32, 1, 352, 256)
-if torch.cuda.is_available():
-    model = model.cuda()
-    model = torch.nn.DataParallel(model, device_ids=range(1))
-print('loading pretrained model from %s' % model_path)
-model.load_state_dict(torch.load(model_path))
 
-converter = utils.strLabelConverter(keys.alphabet)
-
-transformer = dataset.resizeNormalize((800, 32))
-
-correct = 0.0
-count = 0.0
-
-for filename in os.listdir(val_path):
-    filepath = os.path.join(val_path,filename)
-    ext_name = os.path.splitext(filepath)
-    if ext_name[1] =='.JPG':
-        count += 1
-
-for i in range(1,int(count)+1):
-    img_name = (val_path + '/%d.JPG')%i
-    image = Image.open(img_name).convert('L')
-    image = transformer(image)
-    if torch.cuda.is_available():
-        image = image.cuda()
-    image = image.view(1, *image.size())
-    image = Variable(image)
-
-    model.eval()
-    preds = model(image)
-
-    _, preds = preds.max(2)
-    preds = preds.transpose(1, 0).contiguous().view(-1)
-
-    preds_size = Variable(torch.IntTensor([preds.size(0)]))
-    raw_pred = converter.decode(preds.data, preds_size.data, raw=True)
-    sim_pred = converter.decode(preds.data, preds_size.data, raw=False)
-
-    text_name = (val_path + '/%d.txt')%i
-    with open(text_name,'r') as f:
-        text = f.read()
-        text = unicode(text, 'utf8')
-        text = text.replace(' ','')
-        #fin = open('.'+f.split('.')[1]+'.dat','r')
-        #gt = fin.readline()
-    if text==sim_pred:
-        correct+=1
-    #print('%-20s => %-20s'% (raw_pred, sim_pred))
-    #print('gt: '+gt)
-print("accuracy: %f count: %d" % (correct/count, count))
-'''
-#opt_valroot = "/home/xuewenyuan/crnn.pytorch/data/lmdb/val"
-opt_valroot = "/home/xuewenyuan/crnn.pytorch/data/cmdd-multi-val/val"
+opt_valroot = "./data/val"
 opt_batchSize = 20
 opt_workers = 2
 
