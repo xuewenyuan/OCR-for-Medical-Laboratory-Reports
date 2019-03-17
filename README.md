@@ -1,8 +1,9 @@
 # OCR-for-Medical-Laboratory-Reports
 
-Test code for text detection and recognition from images of medical laboratory reports
+Test code for text detection and recognition from images of medical laboratory reports. The results may have some deviation on different devices.
 
-The text detection module is forked from [endernewton](https://github.com/endernewton/tf-faster-rcnn).
+The text detection module is forked from [endernewton](https://github.com/endernewton/tf-faster-rcnn). We improve the results through a patch-based strategy.
+The text recognition module is implemented according to [meijieru](https://github.com/meijieru/crnn.pytorch). A concatenation structure is designed to utilize both the shallow and deep features, which results in a higher accuracy.
 
 ## Text detection
 1. Download **the dataset** from [Google Drive](https://drive.google.com/file/d/1c8F2ZmqFhvc8_QQEJBxKhUYdsMSBgReJ/view?usp=sharing). 
