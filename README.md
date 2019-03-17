@@ -19,7 +19,7 @@ The text recognition module is implemented according to [meijieru](https://githu
           ├── editAnnotation.py
           ├── labels_src.json
    ```
-3. Download **the model** from [Google Drive]().
+3. Download **the model** from [Google Drive](https://drive.google.com/file/d/1vIsscaZwqY0QWTu12Ah24gyYKuu7YF0y/view?usp=sharing).
 4. Extract the .zip file and put them under "./detection/output/". Then the folder should be:
    ```
    ├── detection
@@ -55,4 +55,32 @@ The text recognition module is implemented according to [meijieru](https://githu
    ```
    python ./tools/eval_results.py
    ```
-## Text Recognition (coming soon)
+## Text Recognition 
+1. Download **val set** from [Google Drive](https://drive.google.com/file/d/13zBDjnC88b5YmYxrDuvJrhcDDUOfnahE/view?usp=sharing). 
+2. The test set has been transformed as LMDB format. Extract the .zip file and put them under "./recognition/data/val". Then the folder should be:
+   ```
+   ├── recognition
+    ├── data
+      ├── val
+        ├── data.mdb
+        ├── lock.mdb
+   ```
+3. Download **the model** from [Google Drive](https://drive.google.com/file/d/1o4UX7lO04NOncPpr8ecnTPOMAVCnDtJi/view?usp=sharing).
+4. Put "netCRNN_L3.pth" under "./recognition/output/". Then the folder should be:
+   ```
+   ├── recognition
+    ├── output
+      ├── netCRNN_L3.pth
+   ```
+5. Dependence: Pytorch 0.2 and [warp_ctc_pytorch](https://github.com/SeanNaren/warp-ctc/tree/pytorch_bindings/pytorch_binding).
+6. Modify the GPU number before test.
+   ```
+   cd recognition
+   vim eval.py
+   
+   16 os.environ['CUDA_VISIBLE_DEVICES']='1'
+   ```
+   Then, run "eval.py":
+   ```
+   python eval.py
+   ```
